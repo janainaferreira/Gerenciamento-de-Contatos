@@ -46,23 +46,25 @@ public class ContatoController implements Initializable {
 	}
 
 	private void preencherLista(){
-		
+
 		lstContatos.getItems().clear();
 		Connection con = MySqlConnect.ConectarDb();
-		
+
 		String sql = "select * from contact";
-		
+
+		// lal
+
 		try {
 			ResultSet rs = con.createStatement().executeQuery(sql);
-			
+
 			while(rs.next()) {
-				
+
 				String contato;
-				
+
 				contato = rs.getString("name");
 				contato += "-";
 				contato += rs.getString("phone");
-				
+
 				lstContatos.getItems().add(contato);
 			}
 		} catch (SQLException e) {
@@ -75,8 +77,8 @@ public class ContatoController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+
 		preencherLista();
-		
+
 	}
 }
